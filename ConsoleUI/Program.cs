@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,7 +47,55 @@ namespace ConsoleUI
 
             // Call each of the drive methods for one car and one motorcycle
 
-            #endregion            
+            #endregion        
+            
+            var vehicles = new List<Vehicle>();
+
+            var FictionalCar = new Car
+            {
+                HasTrunk = true,
+                Year = 1980,
+                Make = "GaZ Motors",
+                Model = "122m"
+            };
+            vehicles.Add(FictionalCar);
+
+            var FictionalMotorcycle = new Motorcycle
+            {
+                HasSideCar = true,
+                Year = 1966,
+                Make = "Howard-Darrylsons",
+                Model = "Roadrager"
+            };
+            vehicles.Add(FictionalMotorcycle);
+
+            Vehicle mycar = new Car
+            {
+                HasTrunk = true,
+                Year = 1998,
+                Make = "Lexus",
+                Model = "ES300"
+            };
+            vehicles.Add(mycar);
+
+            Vehicle volkswagen = new Car
+            {
+                HasTrunk = true,
+                Year = 1966,
+                Make = "Volkswagen",
+                Model = "Type 1"
+
+            };
+            vehicles.Add(volkswagen);
+
+            foreach (var vehicle in vehicles)
+            { 
+                Console.WriteLine($"{vehicle.Year} {vehicle.Make} {vehicle.Model}");
+                vehicle.DriveAbstract();
+                vehicle.DriveVirtual();
+                Console.WriteLine();
+            }
+            
             Console.ReadLine();
         }
     }
